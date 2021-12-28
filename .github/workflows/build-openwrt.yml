@@ -120,6 +120,12 @@ jobs:
         name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: openwrt/bin
 
+      - name: Upload package
+        uses: actions/upload-artifact@main
+        with:
+          name: OpenWrt_package
+          path: ./bin/packages/
+
     - name: Organize files
       id: organize
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
